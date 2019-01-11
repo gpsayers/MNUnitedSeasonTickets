@@ -1,0 +1,254 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <h1>MN United Season Tickets</h1>
+
+</div>
+
+
+<div class="row">
+    <div class="col-lg-10">
+        <div id='calendarApril'></div>
+    </div>
+    <div class="col-lg-10">
+        <div id='calendarMay'></div>
+    </div>
+    <div class="col-lg-10">
+        <div id='calendarJune'></div>
+    </div>
+    <div class="col-lg-10">
+        <div id='calendarJuly'></div>
+    </div>
+    <div class="col-lg-10">
+        <div id='calendarAugust'></div>
+    </div>
+    <div class="col-lg-10">
+        <div id='calendarSeptember'></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        //your code here
+
+        function loadEvents() {
+            $.getJSON("../Content/eventData.json").done(function (data) {
+                $('#calendarApril').fullCalendar({
+                    defaultDate: '2019-04-01',
+                    contentHeight: "auto",
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                        $.ajax({
+                                            url: '/Home/SubmitChange',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            data: $("#myform").serialize(),
+                                            success: function (data) {
+                                                $('#calendarApril').fullCalendar('removeEvents', event.id);
+                                                $('#calendarApril').fullCalendar('renderEvent', data);
+                                            }
+                                        });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+
+                    },
+                    showNonCurrentDates: false
+                });
+
+                $('#calendarMay').fullCalendar({
+                    defaultDate: '2019-05-01',
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarMay').fullCalendar('removeEvents', event.id);
+                                            $('#calendarMay').fullCalendar('renderEvent', data);
+                                        }
+                                    });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+                    },
+                    showNonCurrentDates: false
+                })
+
+                $('#calendarJune').fullCalendar({
+                    defaultDate: '2019-06-01',
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarJune').fullCalendar('removeEvents', event.id);
+                                            $('#calendarJune').fullCalendar('renderEvent', data);
+                                        }
+                                    });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+                    },
+                    showNonCurrentDates: false
+                })
+                $('#calendarJuly').fullCalendar({
+                    defaultDate: '2019-07-01',
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarJuly').fullCalendar('removeEvents', event.id);
+                                            $('#calendarJuly').fullCalendar('renderEvent', data);
+                                        }
+                                    });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+                    },
+                    showNonCurrentDates: false
+                })
+                $('#calendarAugust').fullCalendar({
+                    defaultDate: '2019-08-01',
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarAugust').fullCalendar('removeEvents', event.id);
+                                            $('#calendarAugust').fullCalendar('renderEvent', data);
+                                        }
+                                    });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+                    },
+                    showNonCurrentDates: false
+                })
+                $('#calendarSeptember').fullCalendar({
+                    defaultDate: '2019-09-01',
+                    events: data,
+                    eventClick: function (event, element) {
+                        console.log(event.id + ' clicked.');
+                        bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                            "<input type='hidden' name='id' value='" + event.id + "'>" +
+                            "<div class='form-group'><label>Ticket 1</label>" +
+                            "<input type='text' name='ticket1' class='form-control' value='" + event.ticket1 + "' /></div>" +
+                            "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
+                            , function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarSeptember').fullCalendar('removeEvents', event.id);
+                                            $('#calendarSeptember').fullCalendar('renderEvent', data);
+                                        }
+                                    });
+                                }
+                            });
+                    },
+                    eventRender: function (event, element) {
+                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        element.find('.fc-title').append("<br/>");
+                        element.find('.fc-title').append(image);
+                        element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
+                    },
+                    showNonCurrentDates: false
+                })
+            });
+        }
+
+        loadEvents();
+
+    });
+
+
+
+
+</script>
