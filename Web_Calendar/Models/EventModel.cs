@@ -23,6 +23,28 @@ namespace Web_Calendar.Models
 		public List<EventModel> list { get; set; }
 	}
 
+	public class EventStats
+	{
+		public EventStats()
+		{
+			ticketsOpen = 0;
+			ticketOpenValue = 0;
+			ticketUserList = new List<TicketUser>();
+		}
+
+		public int ticketsOpen { get; set; }
+		public decimal ticketOpenValue { get; set; }
+
+		public List<TicketUser> ticketUserList { get; set; }
+	}
+
+	public class TicketUser
+	{
+		public string Name { get; set; }
+		public int ticketCount { get; set; }
+		public decimal ticketValue { get; set; }
+	}
+
 	public class NoCache : ActionFilterAttribute
 	{
 		public override void OnResultExecuting(ResultExecutingContext filterContext)

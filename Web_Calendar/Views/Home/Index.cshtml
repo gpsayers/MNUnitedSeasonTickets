@@ -3,41 +3,117 @@
 }
 
 
-<div class="jumbotron">
-    <h1>MN United Season Tickets</h1>
 
+    <div class="row">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-lg-12"><h1>MN United Season Tickets</h1></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+<div class="row" style="border: 1px solid #e1e1e8; border-radius: 4px; margin-bottom: 48px">
+    <div class="col-lg-6">
+        <form style="margin-top: 10px">
+            <div class="form-group"><label>Tickets Available</label><input class="form-control" id="ticketsAvailable" disabled="disabled" /></div>
+            <div class="form-group"><label>Open Ticket Value</label><input class="form-control" id="ticketsValue" disabled="disabled" /></div>
+            <div class="form-group"><label>Season Ticket Price</label><input class="form-control" value="24.42" disabled="disabled" /></div>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <table class="table" id="ticketTable">
+            <caption>Ticket breakdown</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Tickets</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
 </div>
-
-
 <div class="row">
     <div class="col-lg-10">
         <div id='calendarApril'></div>
-    </div>
-    <div class="col-lg-10">
+
         <div id='calendarMay'></div>
-    </div>
-    <div class="col-lg-10">
+
         <div id='calendarJune'></div>
-    </div>
-    <div class="col-lg-10">
+
         <div id='calendarJuly'></div>
-    </div>
-    <div class="col-lg-10">
+
         <div id='calendarAugust'></div>
-    </div>
-    <div class="col-lg-10">
+
         <div id='calendarSeptember'></div>
+    </div>
+    <div class="col-lg-2" id="test">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Legend
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Click event to change ticket holders.</h6>
+                <p class="card-text">
+                    <table style="border-collapse: separate; border-spacing: 2px;">
+                        <tr>
+                            <td><div style="background-color: #337ab7; width: 20px; height: 20px"></div></td>
+                            <td><div> = All tickets open</div></td>
+                        </tr>
+                        <tr>
+                            <td><div style="background-color: green; width: 20px; height: 20px"></div></td>
+                            <td><div> = All tickets used</div></td>
+                        </tr>
+                        <tr>
+                            <td><div style="background-color: orange; width: 20px; height: 20px"></div></td>
+                            <td><div> = One ticket used</div></td>
+                        </tr>
+                    </table>
+
+
+
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
 
+    $(window).scroll(function () {
+        $("#test").stop().animate({ "marginTop": ($(window).scrollTop()) + "px", "marginLeft": ($(window).scrollLeft()) + "px" }, "slow");
+    });
+
     $(document).ready(function () {
-        //your code here
+
+        function getStats() {
+            $.getJSON('/Home/GetEventStats').done(function (data) {
+                console.log(data);
+                $('#ticketsAvailable').val(data.ticketsOpen);
+                $('#ticketsValue').val(data.ticketOpenValue.toFixed(2));
+                $("#ticketTable tbody tr").remove(); 
+                data.ticketUserList.forEach(function (item) {
+
+                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue + '</td></tr>');
+                });
+
+
+            });
+        }
+
+        getStats();
 
         function loadEvents() {
             $.getJSON('/Home/GetEvents').done(function (data) {
-                console.log(data);
 
                 $('#calendarApril').fullCalendar({
                     defaultDate: '2019-04-01',
@@ -52,16 +128,17 @@
                             "<div class='form-group'><label>Ticket 2</label><input type='text' name='ticket2' class='form-control' value='" + event.ticket2 + "' /></div></form>"
                             , function (result) {
                                 if (result) {
-                                        $.ajax({
-                                            url: '/Home/SubmitChange',
-                                            type: 'POST',
-                                            dataType: 'json',
-                                            data: $("#myform").serialize(),
-                                            success: function (data) {
-                                                $('#calendarApril').fullCalendar('removeEvents', event.id);
-                                                $('#calendarApril').fullCalendar('renderEvent', data);
-                                            }
-                                        });
+                                    $.ajax({
+                                        url: '/Home/SubmitChange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: $("#myform").serialize(),
+                                        success: function (data) {
+                                            $('#calendarApril').fullCalendar('removeEvents', event.id);
+                                            $('#calendarApril').fullCalendar('renderEvent', data);
+                                            getStats();
+                                        }
+                                    });
                                 }
                             });
                     },
