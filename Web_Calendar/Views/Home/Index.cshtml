@@ -18,7 +18,7 @@
 
 
 
-<div class="row" style="border: 1px solid #e1e1e8; border-radius: 4px; margin-bottom: 48px">
+<div class="row" style="border: 1px solid #e1e1e8; border-radius: 4px;">
     <div class="col-lg-6">
         <form style="margin-top: 10px">
             <div class="form-group"><label>Tickets Available</label><input class="form-control" id="ticketsAvailable" disabled="disabled" /></div>
@@ -43,7 +43,38 @@
         </table>
     </div>
 </div>
-<div class="row">
+<div class="row" id="mobileLegend" style="margin-top: 30px">
+    <div class="col-lg-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Legend
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Click event to change ticket holders.</h6>
+                <p class="card-text">
+                    <table style="border-collapse: separate; border-spacing: 2px;">
+                        <tr>
+                            <td><div style="background-color: #337ab7; width: 20px; height: 20px"></div></td>
+                            <td><div> = All tickets open</div></td>
+                        </tr>
+                        <tr>
+                            <td><div style="background-color: green; width: 20px; height: 20px"></div></td>
+                            <td><div> = All tickets used</div></td>
+                        </tr>
+                        <tr>
+                            <td><div style="background-color: orange; width: 20px; height: 20px"></div></td>
+                            <td><div> = One ticket used</div></td>
+                        </tr>
+                    </table>
+
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 30px">
     <div class="col-lg-10">
         <div id='calendarApril'></div>
 
@@ -90,7 +121,7 @@
 
 <script type="text/javascript">
 
-    //$.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+    $('#mobileLegend').hide();
 
     $(window).scroll(function () {
         $("#eventLegend").stop().animate({ "marginTop": ($(window).scrollTop()) + "px", "marginLeft": ($(window).scrollLeft()) + "px" }, "slow");
@@ -100,6 +131,7 @@
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $("#eventLegend").remove();
+            $('#mobileLegend').show();
         }
 
         function getStats() {
