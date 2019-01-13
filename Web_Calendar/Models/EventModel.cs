@@ -18,6 +18,11 @@ namespace Web_Calendar.Models
 		public string color { get; set; }
 	}
 
+	public class EventModelCollection
+	{
+		public List<EventModel> list { get; set; }
+	}
+
 	public class NoCache : ActionFilterAttribute
 	{
 		public override void OnResultExecuting(ResultExecutingContext filterContext)

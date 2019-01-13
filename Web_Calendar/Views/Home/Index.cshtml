@@ -36,7 +36,9 @@
         //your code here
 
         function loadEvents() {
-            $.getJSON("../Content/eventData.json").done(function (data) {
+            $.getJSON('/Home/GetEvents').done(function (data) {
+                console.log(data);
+
                 $('#calendarApril').fullCalendar({
                     defaultDate: '2019-04-01',
                     contentHeight: "auto",

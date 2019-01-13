@@ -17,6 +17,13 @@ namespace Web_Calendar.Controllers
 			return View();
 		}
 
+		public JsonResult GetEvents()
+		{
+			List<EventModel> eventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
+
+			return Json(eventList, JsonRequestBehavior.AllowGet);
+		}
+
 		public JsonResult SubmitChange(string id, string ticket1, string ticket2)
 		{
 			if (!String.IsNullOrEmpty(id))
