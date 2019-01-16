@@ -3,7 +3,6 @@
 }
 
 
-
     <div class="row">
         <div class="jumbotron">
             <div class="row">
@@ -15,16 +14,13 @@
     </div>
 
 
-
-
-
 <div class="row" style="border: 1px solid #e1e1e8; border-radius: 4px;">
     <div class="col-lg-6">
         <form style="margin-top: 10px">
-            <div class="form-group"><label>Tickets Available</label><input class="form-control" id="ticketsAvailable" disabled="disabled" /></div>
-            <div class="form-group"><label>Open Ticket Value</label><input class="form-control" id="ticketsValue" disabled="disabled" /></div>
+            <div class="form-group"><label>Unused Tickets</label><input class="form-control" id="ticketsAvailable" disabled="disabled" /></div>
+            <div class="form-group"><label>Unused Ticket Total</label><input class="form-control" id="ticketsValue" disabled="disabled" /></div>
             <div class="form-group"><label>Season Ticket Price</label><input class="form-control" value="24.42" disabled="disabled" /></div>
-            <div class="form-group"><label>Device</label><input class="form-control" id="device" disabled="disabled" /></div>
+            @*<div class="form-group"><label>Device</label><input class="form-control" id="device" disabled="disabled" /></div>*@
         </form>
     </div>
     <div class="col-lg-6">
@@ -66,8 +62,6 @@
                             <td><div> = One ticket used</div></td>
                         </tr>
                     </table>
-
-
 
                 </p>
             </div>
@@ -129,6 +123,8 @@
 
     $(document).ready(function () {
 
+        //console.log('@ViewBag.Hash');
+
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $("#eventLegend").remove();
             $('#mobileLegend').show();
@@ -136,8 +132,8 @@
 
         function getStats() {
             $.getJSON('/Home/GetEventStats').done(function (data) {
-                console.log(data);
-                $('#device').val(navigator.userAgent.toLowerCase());
+
+                //$('#device').val(navigator.userAgent.toLowerCase());
                 $('#ticketsAvailable').val(data.ticketsOpen);
                 $('#ticketsValue').val(data.ticketOpenValue.toFixed(2));
                 $("#ticketTable tbody tr").remove(); 
@@ -212,6 +208,7 @@
                                         success: function (data) {
                                             $('#calendarMay').fullCalendar('removeEvents', event.id);
                                             $('#calendarMay').fullCalendar('renderEvent', data);
+                                            getStats();
                                         }
                                     });
                                 }
@@ -246,6 +243,7 @@
                                         success: function (data) {
                                             $('#calendarJune').fullCalendar('removeEvents', event.id);
                                             $('#calendarJune').fullCalendar('renderEvent', data);
+                                            getStats();
                                         }
                                     });
                                 }
@@ -279,6 +277,7 @@
                                         success: function (data) {
                                             $('#calendarJuly').fullCalendar('removeEvents', event.id);
                                             $('#calendarJuly').fullCalendar('renderEvent', data);
+                                            getStats();
                                         }
                                     });
                                 }
@@ -312,6 +311,7 @@
                                         success: function (data) {
                                             $('#calendarAugust').fullCalendar('removeEvents', event.id);
                                             $('#calendarAugust').fullCalendar('renderEvent', data);
+                                            getStats();
                                         }
                                     });
                                 }
@@ -345,6 +345,7 @@
                                         success: function (data) {
                                             $('#calendarSeptember').fullCalendar('removeEvents', event.id);
                                             $('#calendarSeptember').fullCalendar('renderEvent', data);
+                                            getStats();
                                         }
                                     });
                                 }

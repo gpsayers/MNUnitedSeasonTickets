@@ -1,0 +1,40 @@
+﻿@model Web_Calendar.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+
+                <div class="form-group">
+                    @Html.LabelFor(a => a.userName)
+                    @Html.TextBoxFor(a => a.userName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.userName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(a => a.password)
+                    @Html.PasswordFor(a => a.password, new { @class = "form-control" })
+                   @Html.ValidationMessageFor(a => a.password)
+                </div>
+
+                    <input type="submit" value="Login" class="btn btn-default" />
+
+
+    </fieldset>
+}
+

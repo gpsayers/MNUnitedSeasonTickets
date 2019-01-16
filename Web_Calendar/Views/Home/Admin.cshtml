@@ -1,0 +1,44 @@
+﻿@model Web_Calendar.Models.EventModelCollection
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+
+<textarea class="form-control" style="width: 100%; max-width: none; height: 800px" id="results">
+
+</textarea>
+
+@if (ViewBag.Message != null)
+{
+    <p class="bg-danger">@ViewBag.Message</p>
+}
+
+<form id="adminForm" action='/Home/Admin' method='post'>
+    <input type="hidden" name="jsonText" id="jsonText" value="test" />
+    <input type="submit" id="submitButton" value="Submit" class="btn btn-default" style="margin-top: 10px"/>
+</form>
+
+
+<script language="javascript" type="text/javascript">
+
+    function getStats() {
+        $.getJSON('/Home/GetEvents').done(function (data) {
+
+            var jsonPretty = JSON.stringify(data, null, 4);
+             $("#results").text(jsonPretty);
+
+        });
+    }
+
+    getStats();
+
+    $('#adminForm').submit(function () {
+        var jsonText = $("#results").val();
+        $('#jsonText').val(jsonText);
+
+    });
+
+</script>
+

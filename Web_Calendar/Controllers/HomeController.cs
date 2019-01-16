@@ -8,6 +8,10 @@ using Web_Calendar.Models;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Net;
+using Web_Calendar.Filters;
+using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Web_Calendar.Controllers
 {
@@ -106,7 +110,7 @@ namespace Web_Calendar.Controllers
 				ticket2 = "Open";
 			}
 
-			Regex r = new Regex("^[a-zA-Z0-9]*$");
+			Regex r = new Regex("^[a-zA-Z0-9 ]*$");
 			if (!r.IsMatch(ticket1) || !r.IsMatch(ticket2))
 			{
 				Response.StatusCode = (int)HttpStatusCode.InternalServerError;
@@ -152,18 +156,116 @@ namespace Web_Calendar.Controllers
 
 		}
 
-		public ActionResult About()
+		[HttpGet]
+		public ActionResult Login()
 		{
-			ViewBag.Message = "Your application description page.";
 
 			return View();
 		}
 
-		public ActionResult Contact()
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Login(LoginModel model)
 		{
-			ViewBag.Message = "Your contact page.";
+			// incremental delay to prevent brute force attacks
+			int incrementalDelay;
+			if (HttpContext.Application[Request.UserHostAddress] != null)
+			{
+				// wait for delay if there is one
+				incrementalDelay = (int)HttpContext.Application[Request.UserHostAddress];
+				await Task.Delay(incrementalDelay * 1000);
+			}
+
+			if (ModelState.IsValid && !String.IsNullOrEmpty(model.password) && !String.IsNullOrEmpty(model.userName))
+			{
+				if (GetHash(model.password) == "3057dd9e2b8b39c2b4bc4cd38ea4af1ddd69c9d05abdddf7c98dc1ae1699a27d" && 
+					GetHash(model.userName) == "c262f32d4a2b5ea4629efbae471f827d7588a0b5ae296f6d8d24063747966061")
+				{
+					Session["userName"] = model.userName;
+
+					// reset incremental delay on successful login
+					if (HttpContext.Application[Request.UserHostAddress] != null)
+					{
+						HttpContext.Application.Remove(Request.UserHostAddress);
+					}
+
+					return RedirectToAction("Admin", "Home");
+
+
+				}
+
+
+			}
+
+			// login failed
+			// increment the delay on failed login attempts
+			if (HttpContext.Application[Request.UserHostAddress] == null)
+			{
+				incrementalDelay = 1;
+			}
+			else
+			{
+				incrementalDelay = (int)HttpContext.Application[Request.UserHostAddress] * 2;
+			}
+			HttpContext.Application[Request.UserHostAddress] = incrementalDelay;
+
+			ViewBag.Message = "The user name or password provided is incorrect.";
+			return View();
+
+		}
+
+		[HttpGet]
+		[CustomAuthentication]
+		public ActionResult Admin()
+		{
+			var model = new EventModelCollection();
+
+			model.list = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
 
 			return View();
+		}
+
+		[HttpPost]
+		[CustomAuthentication]
+		public ActionResult Admin(string jsonText)
+		{
+			try
+			{
+				var temp = JsonConvert.DeserializeObject<List<EventModel>>(jsonText);
+			}
+			catch
+			{
+				ViewBag.Message = "Invalid Json";
+				return View();
+			}
+
+			System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/eventData.json")), jsonText);
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Logout()
+		{
+			Session.Remove("userName");
+
+			return RedirectToAction("Index");
+		}
+
+		private string GetHash(string rawData)
+		{
+			// Create a SHA256   
+			using (SHA256 sha256Hash = SHA256.Create())
+			{
+				// ComputeHash - returns byte array  
+				byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+				// Convert byte array to a string   
+				StringBuilder builder = new StringBuilder();
+				for (int i = 0; i < bytes.Length; i++)
+				{
+					builder.Append(bytes[i].ToString("x2"));
+				}
+				return builder.ToString();
+			}
 		}
 	}
 }
