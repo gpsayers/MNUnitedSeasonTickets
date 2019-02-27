@@ -19,7 +19,7 @@
         <form style="margin-top: 10px">
             <div class="form-group"><label>Unused Tickets</label><input class="form-control" id="ticketsAvailable" disabled="disabled" /></div>
             <div class="form-group"><label>Unused Ticket Total</label><input class="form-control" id="ticketsValue" disabled="disabled" /></div>
-            <div class="form-group"><label>Season Ticket Price</label><input class="form-control" value="24.42" disabled="disabled" /></div>
+            <div class="form-group"><label>Season Ticket Price</label><input class="form-control" id="singleTicketValue" value="23.06" disabled="disabled" /></div>
             @*<div class="form-group"><label>Device</label><input class="form-control" id="device" disabled="disabled" /></div>*@
         </form>
     </div>
@@ -139,7 +139,7 @@
                 $("#ticketTable tbody tr").remove(); 
                 data.ticketUserList.forEach(function (item) {
 
-                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue + '</td></tr>');
+                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue.toFixed(2) + '</td></tr>');
                 });
 
 
@@ -179,7 +179,7 @@
                             });
                     },
                     eventRender: function (event, element) {
-                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        var image = $('<img/>').attr("src", event.img).attr("height", 36);
                         element.find('.fc-title').append("<br/>");
                         element.find('.fc-title').append(image);
                         element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);
@@ -215,7 +215,7 @@
                             });
                     },
                     eventRender: function (event, element) {
-                        var image = $('<img/>').attr("src", event.img).attr("width", 55);
+                        var image = $('<img/>').attr("src", event.img).attr("height", 36);
                         element.find('.fc-title').append("<br/>");
                         element.find('.fc-title').append(image);
                         element.find('.fc-title').append("<br/> Ticket 1: " + event.ticket1 + "<br/> Ticket 2: " + event.ticket2);

@@ -33,7 +33,7 @@ namespace Web_Calendar.Controllers
 
 		public JsonResult GetEventStats()
 		{
-			decimal ticketPrice = 24.42M;
+			decimal ticketPrice = 23.06M;
 			var stats = new EventStats();
 
 			List<EventModel> eventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
@@ -77,7 +77,7 @@ namespace Web_Calendar.Controllers
 					if (query != null)
 					{
 						query.ticketCount++;
-						query.ticketValue = Math.Round(query.ticketCount * ticketPrice, 2);
+						query.ticketValue = query.ticketCount * ticketPrice;
 					}
 					else
 					{
@@ -85,7 +85,7 @@ namespace Web_Calendar.Controllers
 						{
 							Name = eventItem.ticket2,
 							ticketCount = 1,
-							ticketValue = ticketPrice
+							ticketValue = Math.Round(ticketPrice, 2)
 						};
 						stats.ticketUserList.Add(newTicketUser);
 					}
