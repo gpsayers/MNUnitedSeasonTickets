@@ -38,6 +38,9 @@ namespace Web_Calendar.Controllers
 
 			List<EventModel> eventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
 
+			List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json"))));
+
+
 			foreach (var eventItem in eventList)
 			{
 				if (eventItem.ticket1 == "Open")
@@ -61,6 +64,7 @@ namespace Web_Calendar.Controllers
 							ticketCount = 1,
 							ticketValue = ticketPrice
 						};
+
 						stats.ticketUserList.Add(newTicketUser);
 					}
 				}
@@ -94,7 +98,36 @@ namespace Web_Calendar.Controllers
 			}
 			stats.ticketOpenValue = Math.Round(stats.ticketsOpen * ticketPrice, 2);
 
+			foreach (var statsItem in stats.ticketUserList)
+			{
+				statsItem.amountPaid = 0;
+
+				foreach (var paidItem in paidList)
+				{
+					if (statsItem.Name == paidItem.Name)
+					{
+						statsItem.amountPaid = paidItem.AmountPaid;
+					}
+				}
+			}
+
 			return Json(stats, JsonRequestBehavior.AllowGet);
+		}
+
+		public JsonResult GetAmmountPaid()
+		{
+
+			List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json"))));
+
+			return Json(paidList, JsonRequestBehavior.AllowGet);
+		}
+
+		public JsonResult SubmitPaidChange(UserPaidModel paidModel)
+		{
+			var newFileString = JsonConvert.SerializeObject(paidModel);
+			System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json")), newFileString);
+
+			return Json(paidModel, JsonRequestBehavior.AllowGet);
 		}
 
 		public JsonResult SubmitChange(string id, string ticket1, string ticket2)

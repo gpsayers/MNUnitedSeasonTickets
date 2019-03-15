@@ -43,6 +43,15 @@ namespace Web_Calendar.Models
 		public string Name { get; set; }
 		public int ticketCount { get; set; }
 		public decimal ticketValue { get; set; }
+
+		public decimal amountPaid { get; set; }
+	}
+
+	public class UserPaidModel
+	{
+		public string Name { get; set; }
+
+		public decimal AmountPaid { get; set; }
 	}
 
 	public class NoCache : ActionFilterAttribute

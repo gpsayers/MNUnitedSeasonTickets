@@ -31,6 +31,7 @@
                     <th>Name</th>
                     <th>Tickets</th>
                     <th>Value</th>
+                    <th>Paid</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,7 +140,7 @@
                 $("#ticketTable tbody tr").remove(); 
                 data.ticketUserList.forEach(function (item) {
 
-                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue.toFixed(2) + '</td></tr>');
+                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue.toFixed(2) + '</td><td>' + item.amountPaid +'</td></tr>');
                 });
 
 
