@@ -122,12 +122,37 @@ namespace Web_Calendar.Controllers
 			return Json(paidList, JsonRequestBehavior.AllowGet);
 		}
 
-		public JsonResult SubmitPaidChange(UserPaidModel paidModel)
+		public JsonResult SubmitPaidChange(string name, decimal amountPaid )
 		{
-			var newFileString = JsonConvert.SerializeObject(paidModel);
-			System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json")), newFileString);
+			try
+			{
+				List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json"))));
 
-			return Json(paidModel, JsonRequestBehavior.AllowGet);
+				var paidItem = paidList.Where(x => x.Name == name).FirstOrDefault();
+
+				if (paidItem == null)
+				{
+					paidList.Add(new UserPaidModel { Name = name, AmountPaid = amountPaid });
+				}
+				else
+				{
+					paidItem.Name = name;
+					paidItem.AmountPaid = amountPaid;
+				}
+
+				var newFileString = JsonConvert.SerializeObject(paidList);
+				System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json")), newFileString);
+
+				return Json(paidList, JsonRequestBehavior.AllowGet);
+			}
+			catch
+			{
+				//if fail return error
+				Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+				return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+			}
+
+
 		}
 
 		public JsonResult SubmitChange(string id, string ticket1, string ticket2)

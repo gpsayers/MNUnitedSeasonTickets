@@ -37,6 +37,7 @@
                         <th>Tickets</th>
                         <th>Value</th>
                         <th>Paid</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -50,40 +51,83 @@
 
 <script language="javascript" type="text/javascript">
 
-    function getEvents() {
-        $.getJSON('/Home/GetEvents').done(function (data) {
+    $(document).ready(function () {
 
-            var jsonPretty = JSON.stringify(data, null, 4);
-            $("#results").text(jsonPretty);
+        function getEvents() {
+            $.getJSON('/Home/GetEvents').done(function (data) {
 
-        });
-    }
+                var jsonPretty = JSON.stringify(data, null, 4);
+                $("#results").text(jsonPretty);
 
-    getEvents();
-
-    function getStats() {
-        $.getJSON('/Home/GetEventStats').done(function (data) {
-
-            //$('#device').val(navigator.userAgent.toLowerCase());
-            //$('#ticketsAvailable').val(data.ticketsOpen);
-            //$('#ticketsValue').val(data.ticketOpenValue.toFixed(2));
-            //$("#ticketTable tbody tr").remove();
-            data.ticketUserList.forEach(function (item) {
-
-                $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue.toFixed(2) + '</td></tr>');
             });
+        }
 
+        getEvents();
+
+        function getStats() {
+            $.getJSON('/Home/GetEventStats').done(function (data) {
+
+                //$('#device').val(navigator.userAgent.toLowerCase());
+                //$('#ticketsAvailable').val(data.ticketsOpen);
+                //$('#ticketsValue').val(data.ticketOpenValue.toFixed(2));
+                $("#ticketTable tbody tr").remove();
+                data.ticketUserList.forEach(function (item) {
+
+                    $('#ticketTable').append('<tr><td>' + item.Name + '</td><td>' + item.ticketCount + '</td><td>' + item.ticketValue.toFixed(2) + '<td>' + item.amountPaid + '</td></td><td><button type="button" class="btn btn-primary btnadmin" id="' + item.Name + '" value="' + item.amountPaid+'">Edit</button></td></tr>');
+                });
+
+
+            }).done(function () {
+                addClicks();
+                });
+        }
+
+        getStats();
+
+        $('#adminForm').submit(function () {
+            var jsonText = $("#results").val();
+            $('#jsonText').val(jsonText);
 
         });
-    }
 
-    getStats();
 
-    $('#adminForm').submit(function () {
-        var jsonText = $("#results").val();
-        $('#jsonText').val(jsonText);
 
+
+
+        function addClicks() {
+            $('.btnadmin').click(function () {
+                
+                //console.log($(this).attr("value"));
+
+                bootbox.confirm("<form id='myform' action='/Home/SubmitChange' method='post'>" +
+                    "<input type='hidden' name='name' value='" + $(this).attr("id") + "'>" +
+                    "<div class='form-group'><label>Amount Paid</label>" +
+                    "<input type='text' name='amountPaid' class='form-control' value='" + $(this).attr("value")+"' /></div>" +
+                    "</form>"
+                    , function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: '/Home/SubmitPaidChange',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: $("#myform").serialize(),
+                                success: function (data) {
+
+                                    getStats();
+                                }
+                            });
+                        }
+                    });
+
+            });
+        }
     });
+
+
+
+
+
+
 
 </script>
 
