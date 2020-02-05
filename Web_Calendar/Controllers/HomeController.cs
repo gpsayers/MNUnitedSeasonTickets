@@ -249,9 +249,7 @@ namespace Web_Calendar.Controllers
 
 					return RedirectToAction("Admin", "Home");
 
-
 				}
-
 
 			}
 
@@ -298,10 +296,31 @@ namespace Web_Calendar.Controllers
 			}
 
 			System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/eventData.json")), jsonText);
+
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult Logout()
+        [HttpPost]
+        [CustomAuthentication]
+        public ActionResult AdminTicket(string ticketJsonText)
+        {
+            try
+            {
+                List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(ticketJsonText);
+
+            }
+            catch
+            {
+                ViewBag.Message = "Invalid Json";
+                return View();
+            }
+
+            System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json")), ticketJsonText);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Logout()
 		{
 			Session.Remove("userName");
 

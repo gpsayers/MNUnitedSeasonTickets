@@ -1,1 +1,26 @@
-[{"Name":"Jojo","AmountPaid":46.12},{"Name":"Jacinda","AmountPaid":46.12}]
+[
+    {
+        "Name": "Jojo",
+        "AmountPaid": 92.24
+    },
+    {
+        "Name": "Jacinda",
+        "AmountPaid": 46.12
+    },
+    {
+        "Name": "Garth",
+        "AmountPaid": 830.16
+    },
+    {
+        "Name": "Keith",
+        "AmountPaid": 284.26
+    },
+    {
+        "Name": "Sold",
+        "AmountPaid": 239.4
+    },
+    {
+        "Name": "Ben",
+        "AmountPaid": 46.12
+    }
+]

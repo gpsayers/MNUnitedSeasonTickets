@@ -13,21 +13,6 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <textarea class="form-control" style="width: 100%; max-width: none; height: 800px" id="results">
-
-</textarea>
-
-
-
-        <form id="adminForm" action='/Home/Admin' method='post'>
-            <input type="hidden" name="jsonText" id="jsonText" value="test" />
-            <input type="submit" id="submitButton" value="Submit" class="btn btn-default" style="margin-top: 10px" />
-        </form>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
         <div class="col-lg-6">
             <table class="table" id="ticketTable">
                 <caption>Ticket breakdown</caption>
@@ -45,6 +30,36 @@
         </div>
     </div>
 </div>
+
+<h4>Events</h4>
+
+<div class="row">
+    <div class="col-lg-12">
+        <textarea class="form-control" style="width: 100%; max-width: none; height: 800px" id="results">
+        </textarea>
+
+        <form id="adminForm" action='/Home/Admin' method='post'>
+            <input type="hidden" name="jsonText" id="jsonText" value="test" />
+            <input type="submit" id="submitButton" value="Submit" class="btn btn-default" style="margin-top: 10px" />
+        </form>
+    </div>
+</div>
+
+<h4>Tickets</h4>
+
+<div class="row">
+    <div class="col-lg-12">
+        <textarea class="form-control" style="width: 100%; max-width: none; height: 600px" id="ticketJsonResults">
+        </textarea>
+
+        <form id="ticketForm" action='/Home/AdminTicket' method='post'>
+            <input type="hidden" name="ticketJsonText" id="ticketJsonText" value="test" />
+            <input type="submit" id="submitButton" value="Submit" class="btn btn-default" style="margin-top: 10px" />
+        </form>
+    </div>
+</div>
+
+
 
 
 
@@ -64,7 +79,7 @@
 
         getEvents();
 
-        function getStats() {
+        function getTickets() {
             $.getJSON('/Home/GetEventStats').done(function (data) {
 
                 //$('#device').val(navigator.userAgent.toLowerCase());
@@ -82,7 +97,18 @@
                 });
         }
 
-        getStats();
+        getTickets();
+
+        function getTicketsJson() {
+            $.getJSON('/Home/GetAmmountPaid').done(function (data) {
+
+                var jsonPretty = JSON.stringify(data, null, 4);
+                $("#ticketJsonResults").text(jsonPretty);
+
+            });
+        }
+
+        getTicketsJson();
 
         $('#adminForm').submit(function () {
             var jsonText = $("#results").val();
@@ -91,7 +117,11 @@
         });
 
 
+        $('#ticketForm').submit(function () {
+            var jsonText = $("#ticketJsonResults").val();
+            $('#ticketJsonText').val(jsonText);
 
+        });
 
 
         function addClicks() {
@@ -113,7 +143,7 @@
                                 data: $("#myform").serialize(),
                                 success: function (data) {
 
-                                    getStats();
+                                    getTickets();
                                 }
                             });
                         }
