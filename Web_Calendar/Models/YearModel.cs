@@ -7,5 +7,10 @@ namespace Web_Calendar.Models
 {
     public class YearModel
     {
+        public int yearId { get; set; }
+        public string yearName { get; set; }
+
+        public List<TicketModel> ticketModelList { get; set; }
+
     }
 }

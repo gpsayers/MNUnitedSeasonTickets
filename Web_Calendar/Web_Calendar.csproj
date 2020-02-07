@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomStart.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -132,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\TicketModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\UserModel.cs" />
