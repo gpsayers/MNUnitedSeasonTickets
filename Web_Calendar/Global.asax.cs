@@ -16,6 +16,7 @@ namespace Web_Calendar
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+            CustomStart.Custom();
 		}
 	}
 }

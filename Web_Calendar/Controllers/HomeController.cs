@@ -117,7 +117,7 @@ namespace Web_Calendar.Controllers
 		public JsonResult GetAmmountPaid()
 		{
 
-			List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json"))));
+			List<TeamModel> paidList = JsonConvert.DeserializeObject<List<TeamModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/teamModelList.json"))));
 
 			return Json(paidList, JsonRequestBehavior.AllowGet);
 		}
@@ -274,9 +274,9 @@ namespace Web_Calendar.Controllers
 		[CustomAuthentication]
 		public ActionResult Admin()
 		{
-			var model = new EventModelCollection();
+			//var model = new EventModelCollection();
 
-			model.list = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
+			//model.list = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
 
 			return View();
 		}
@@ -306,7 +306,7 @@ namespace Web_Calendar.Controllers
         {
             try
             {
-                List<UserPaidModel> paidList = JsonConvert.DeserializeObject<List<UserPaidModel>>(ticketJsonText);
+                List<TeamModel> paidList = JsonConvert.DeserializeObject<List<TeamModel>>(ticketJsonText);
 
             }
             catch
@@ -315,7 +315,7 @@ namespace Web_Calendar.Controllers
                 return View();
             }
 
-            System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/ticketBreakdown.json")), ticketJsonText);
+            System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/teamModelList.json")), ticketJsonText);
 
             return RedirectToAction("Index");
         }

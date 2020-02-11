@@ -1,0 +1,79 @@
+[
+    {
+        "userId": 0,
+        "userName": "Garth",
+        "totalUserPaid": 830.16,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 830.16
+            }
+        ]
+    },
+    {
+        "userId": 1,
+        "userName": "Keith",
+        "totalUserPaid": 284.26,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 284.26
+            }
+        ]
+    },
+    {
+        "userId": 2,
+        "userName": "Jon",
+        "totalUserPaid": 0,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 0
+            }
+        ]
+    },
+    {
+        "userId": 3,
+        "userName": "Jojo",
+        "totalUserPaid": 92.24,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 92.24
+            }
+        ]
+    },
+    {
+        "userId": 4,
+        "userName": "Jacinda",
+        "totalUserPaid": 46.12,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 46.12
+            }
+        ]
+    },
+    {
+        "userId": 5,
+        "userName": "Sold",
+        "totalUserPaid": 239.4,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 239.4
+            }
+        ]
+    },
+    {
+        "userId": 6,
+        "userName": "Ben",
+        "totalUserPaid": 46.12,
+        "userModelPaidList": [
+            {
+                "yearId": 0,
+                "amountPaid": 46.12
+            }
+        ]
+    }
+]
