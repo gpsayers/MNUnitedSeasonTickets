@@ -59,7 +59,19 @@
     </div>
 </div>
 
+<h4>Year</h4>
 
+<div class="row">
+    <div class="col-lg-12">
+        <textarea class="form-control" style="width: 100%; max-width: none; height: 600px" id="yearJsonResults">
+        </textarea>
+
+        <form id="yearForm" action='/Home/AdminYear' method='post'>
+            <input type="hidden" name="yearJsonText" id="yearJsonText" value="test" />
+            <input type="submit" id="submitButton" value="Submit" class="btn btn-default" style="margin-top: 10px" />
+        </form>
+    </div>
+</div>
 
 
 
@@ -112,6 +124,17 @@
 
         getTicketsJson();
 
+        function getYearJson() {
+            $.getJSON('/Home/GetYear').done(function (data) {
+
+                var jsonPretty = JSON.stringify(data, null, 4);
+                $("#yearJsonResults").text(jsonPretty);
+
+            });
+        }
+
+        getYearJson();
+
         $('#adminForm').submit(function () {
             var jsonText = $("#results").val();
             $('#jsonText').val(jsonText);
@@ -122,6 +145,12 @@
         $('#ticketForm').submit(function () {
             var jsonText = $("#ticketJsonResults").val();
             $('#ticketJsonText').val(jsonText);
+
+        });
+
+        $('#yearForm').submit(function () {
+            var jsonText = $("#yearJsonResults").val();
+            $('#yearJsonText').val(jsonText);
 
         });
 

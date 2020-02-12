@@ -122,7 +122,15 @@ namespace Web_Calendar.Controllers
 			return Json(paidList, JsonRequestBehavior.AllowGet);
 		}
 
-		public JsonResult SubmitPaidChange(string name, decimal amountPaid )
+        public JsonResult GetYear()
+        {
+
+            List<YearModel> paidList = JsonConvert.DeserializeObject<List<YearModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/yearModel.json"))));
+
+            return Json(paidList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SubmitPaidChange(string name, decimal amountPaid )
 		{
 			try
 			{
@@ -306,7 +314,7 @@ namespace Web_Calendar.Controllers
         {
             try
             {
-                List<TeamModel> paidList = JsonConvert.DeserializeObject<List<TeamModel>>(ticketJsonText);
+                List<TeamModel> model = JsonConvert.DeserializeObject<List<TeamModel>>(ticketJsonText);
 
             }
             catch
@@ -316,6 +324,26 @@ namespace Web_Calendar.Controllers
             }
 
             System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/teamModelList.json")), ticketJsonText);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [CustomAuthentication]
+        public ActionResult AdminYear(string yearJsonText)
+        {
+            try
+            {
+                List<YearModel> model = JsonConvert.DeserializeObject<List<YearModel>>(yearJsonText);
+
+            }
+            catch
+            {
+                ViewBag.Message = "Invalid Json";
+                return View();
+            }
+
+            System.IO.File.WriteAllText(Server.MapPath(Url.Content("~/Content/yearModel.json")), yearJsonText);
 
             return RedirectToAction("Index");
         }

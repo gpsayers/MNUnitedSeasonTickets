@@ -19,6 +19,73 @@ namespace Web_Calendar
 
         }
 
+        public static void Custom3()
+        {
+            List<EventModel> eventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/eventData.json")));
+
+            List<UserModel> userModelList = JsonConvert.DeserializeObject<List<UserModel>>(System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/userModelList.json")));
+
+
+            var ticketModelList = new List<TicketModel>();
+
+            var userTicketModelList = new List<UserTicketModel>();
+
+            var i = 0;
+
+            foreach (var item in eventList)
+            {
+                userTicketModelList = new List<UserTicketModel>();
+
+                var ticket1query = userModelList.Where(x => x.userName == item.ticket1).FirstOrDefault();
+
+                var ticket2query = userModelList.Where(x => x.userName == item.ticket1).FirstOrDefault();
+
+                userTicketModelList.Add(new UserTicketModel
+                {
+                    userId = ticket1query.userId,
+                    ticketPrice = 23.06m
+                });
+
+                userTicketModelList.Add(new UserTicketModel
+                {
+                    userId = ticket2query.userId,
+                    ticketPrice = 23.06m
+                });
+
+                ticketModelList.Add(new TicketModel
+                {
+                    gameId = i,
+                    yearId = 0,
+                    teamId = 0,
+                    gameTime = item.title,
+                    color = item.color,
+                    start = item.start,
+                    end = item.end,
+                    userTicketModelList = userTicketModelList
+                });
+
+                i++;
+
+            }
+
+            var thislist = new List<YearModel>();
+
+            var yearModel = new YearModel
+            {
+                yearId = 0,
+                yearName = "2019",
+                ticketModelList = ticketModelList
+
+            };
+
+            thislist.Add(yearModel);
+            thislist.Add(new YearModel { yearId = 1, yearName = "2020", ticketModelList = new List<TicketModel>() });
+
+            var newFileString = JsonConvert.SerializeObject(thislist);
+            System.IO.File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/yearModel.json"), newFileString);
+
+        }
+
 
         public static void Custom1()
         {

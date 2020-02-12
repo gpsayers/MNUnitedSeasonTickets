@@ -28,5 +28,132 @@
         "teamName": "Columbus Crew SC",
         "teamNameShort": "Columbus",
         "imagePath": "http://content.sportslogos.net/logos/9/324/thumbs/32410022015.gif"
+    },
+	    {
+        "teamId": 5,
+        "teamName": "D.C. United",
+        "teamNameShort": "DC United",
+        "imagePath": ""
+    },
+    {
+        "teamId": 6,
+        "teamName": "Inter Miami CF",
+        "teamNameShort": "Miami",
+        "imagePath": ""
+    },
+    {
+        "teamId": 7,
+        "teamName": "Montreal Impact",
+        "teamNameShort": "Montreal",
+        "imagePath": ""
+    },
+    {
+        "teamId": 8,
+        "teamName": "New England Revolution",
+        "teamNameShort": "New England",
+        "imagePath": ""
+    },
+    {
+        "teamId": 9,
+        "teamName": "New York City FC",
+        "teamNameShort": "NYC FC",
+        "imagePath": ""
+    },
+	    {
+        "teamId": 10,
+        "teamName": "New York Red Bulls",
+        "teamNameShort": "NY Red Bulls",
+        "imagePath": ""
+    },
+    {
+        "teamId": 11,
+        "teamName": "Orlando City SC",
+        "teamNameShort": "Orlando",
+        "imagePath": ""
+    },
+    {
+        "teamId": 12,
+        "teamName": "Philadelphia Union",
+        "teamNameShort": "Philadelphia",
+        "imagePath": ""
+    },
+    {
+        "teamId": 13,
+        "teamName": "Toronto FC",
+        "teamNameShort": "Toronto",
+        "imagePath": ""
+    },
+    {
+        "teamId": 14,
+        "teamName": "Colorado Rapids",
+        "teamNameShort": "Colorado",
+        "imagePath": ""
+    },
+	    {
+        "teamId": 15,
+        "teamName": "FC Dallas",
+        "teamNameShort": "Dallas",
+        "imagePath": ""
+    },
+    {
+        "teamId": 16,
+        "teamName": "Houston Dynamo",
+        "teamNameShort": "Houston",
+        "imagePath": ""
+    },
+    {
+        "teamId": 17,
+        "teamName": "LA Galaxy",
+        "teamNameShort": "LA Galaxy",
+        "imagePath": ""
+    },
+    {
+        "teamId": 18,
+        "teamName": "Los Angeles FC",
+        "teamNameShort": "LAFC",
+        "imagePath": ""
+    },
+    {
+        "teamId": 19,
+        "teamName": "Nashville SC",
+        "teamNameShort": "Nashville",
+        "imagePath": ""
+    },
+	    {
+        "teamId": 20,
+        "teamName": "Portland Timbers",
+        "teamNameShort": "Portland",
+        "imagePath": ""
+    },
+    {
+        "teamId": 21,
+        "teamName": "Real Salt Lake",
+        "teamNameShort": "Salt Lake",
+        "imagePath": ""
+    },
+    {
+        "teamId": 22,
+        "teamName": "San Jose Earthquakes",
+        "teamNameShort": "San Joe",
+        "imagePath": ""
+    },
+    {
+        "teamId": 23,
+        "teamName": "Seattle Sounders FC",
+        "teamNameShort": "Seattle",
+        "imagePath": ""
+    },
+    {
+        "teamId": 24,
+        "teamName": "Sporting Kansas City",
+        "teamNameShort": "Sporting KC",
+        "imagePath": ""
+    },
+	    {
+        "teamId": 25,
+        "teamName": "Vancouver Whitecaps FC",
+        "teamNameShort": "Vancouver",
+        "imagePath": ""
     }
+ 
 ]
