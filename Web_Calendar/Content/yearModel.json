@@ -1,355 +1,545 @@
 [
-    {
+  {
+    "yearId": 0,
+    "yearName": "2019",
+    "ticketModelList": [
+      {
+        "gameId": 0,
         "yearId": 0,
-        "yearName": "2019",
-        "ticketModelList": [
-            {
-                "gameId": 0,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "NYCFC 4:00pm",
-                "color": "green",
-                "start": "2019-04-13",
-                "end": "2019-04-13",
-                "userTicketModelList": [
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 1,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "LA Galaxy 7:00pm",
-                "color": "green",
-                "start": "2019-04-24",
-                "end": "2019-04-24",
-                "userTicketModelList": [
-                    {
-                        "userId": 2,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 2,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 2,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "D.C. United 12:30pm",
-                "color": "green",
-                "start": "2019-04-28",
-                "end": "2019-04-28",
-                "userTicketModelList": [
-                    {
-                        "userId": 3,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 3,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 3,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Seattle Sounders 7:00pm",
-                "color": "green",
-                "start": "2019-05-04",
-                "end": "2019-05-04",
-                "userTicketModelList": [
-                    {
-                        "userId": 4,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 4,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 4,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Columbus Crew 7:00pm",
-                "color": "green",
-                "start": "2019-05-18",
-                "end": "2019-05-18",
-                "userTicketModelList": [
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 5,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Hertha Berlin 7:00pm",
-                "color": "green",
-                "start": "2019-05-22",
-                "end": "2019-05-22",
-                "userTicketModelList": [
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 6,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Houston Dynamo 7:00pm",
-                "color": "green",
-                "start": "2019-05-25",
-                "end": "2019-05-25",
-                "userTicketModelList": [
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 7,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Philadelphia Union 3:00pm",
-                "color": "green",
-                "start": "2019-06-02",
-                "end": "2019-06-02",
-                "userTicketModelList": [
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 8,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "FC Cincinnati 3:00pm",
-                "color": "green",
-                "start": "2019-06-29",
-                "end": "2019-06-29",
-                "userTicketModelList": [
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 9,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "SJ Earthquakes 7:00pm",
-                "color": "green",
-                "start": "2019-07-03",
-                "end": "2019-07-03",
-                "userTicketModelList": [
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 10,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "FC Dallas 7:00pm",
-                "color": "green",
-                "start": "2019-07-13",
-                "end": "2019-07-13",
-                "userTicketModelList": [
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 5,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 11,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Vancouver Whitecaps 7:00pm",
-                "color": "green",
-                "start": "2019-07-27",
-                "end": "2019-07-27",
-                "userTicketModelList": [
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 12,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Portland Timbers 3:00pm",
-                "color": "green",
-                "start": "2019-08-04",
-                "end": "2019-08-04",
-                "userTicketModelList": [
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 13,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Colorado Rapids 7:00pm",
-                "color": "green",
-                "start": "2019-08-14",
-                "end": "2019-08-14",
-                "userTicketModelList": [
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 14,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Orlando City 7:00pm",
-                "color": "green",
-                "start": "2019-08-17",
-                "end": "2019-08-17",
-                "userTicketModelList": [
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 0,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 15,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Real Salt Lake 4:30pm",
-                "color": "green",
-                "start": "2019-09-15",
-                "end": "2019-09-15",
-                "userTicketModelList": [
-                    {
-                        "userId": 6,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 6,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 16,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "Sporting KC 7:00pm",
-                "color": "green",
-                "start": "2019-09-25",
-                "end": "2019-09-25",
-                "userTicketModelList": [
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 1,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            },
-            {
-                "gameId": 17,
-                "yearId": 0,
-                "teamId": 0,
-                "gameTime": "LAFC 6:30pm",
-                "color": "green",
-                "start": "2019-09-29",
-                "end": "2019-09-29",
-                "userTicketModelList": [
-                    {
-                        "userId": 3,
-                        "ticketPrice": 23.06
-                    },
-                    {
-                        "userId": 3,
-                        "ticketPrice": 23.06
-                    }
-                ]
-            }
+        "teamId": 9,
+        "gameTime": "4:00pm",
+        "color": "green",
+        "start": "2019-04-13",
+        "end": "2019-04-13",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          }
         ]
-    },
-    {
+      },
+      {
+        "gameId": 1,
+        "yearId": 0,
+        "teamId": 17,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-04-24",
+        "end": "2019-04-24",
+        "userTicketModelList": [
+          {
+            "userId": 2,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 2,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 2,
+        "yearId": 0,
+        "teamId": 5,
+        "gameTime": "12:30pm",
+        "color": "green",
+        "start": "2019-04-28",
+        "end": "2019-04-28",
+        "userTicketModelList": [
+          {
+            "userId": 3,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 3,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 3,
+        "yearId": 0,
+        "teamId": 23,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-05-04",
+        "end": "2019-05-04",
+        "userTicketModelList": [
+          {
+            "userId": 4,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 4,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 4,
+        "yearId": 0,
+        "teamId": 4,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-05-18",
+        "end": "2019-05-18",
+        "userTicketModelList": [
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 5,
+        "yearId": 0,
+        "teamId": 26,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-05-22",
+        "end": "2019-05-22",
+        "userTicketModelList": [
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 6,
+        "yearId": 0,
+        "teamId": 16,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-05-25",
+        "end": "2019-05-25",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 7,
+        "yearId": 0,
+        "teamId": 12,
+        "gameTime": "3:00pm",
+        "color": "green",
+        "start": "2019-06-02",
+        "end": "2019-06-02",
+        "userTicketModelList": [
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 8,
+        "yearId": 0,
+        "teamId": 3,
+        "gameTime": "3:00pm",
+        "color": "green",
+        "start": "2019-06-29",
+        "end": "2019-06-29",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 9,
+        "yearId": 0,
+        "teamId": 22,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-07-03",
+        "end": "2019-07-03",
+        "userTicketModelList": [
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 10,
+        "yearId": 0,
+        "teamId": 15,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-07-13",
+        "end": "2019-07-13",
+        "userTicketModelList": [
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 5,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 11,
+        "yearId": 0,
+        "teamId": 25,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-07-27",
+        "end": "2019-07-27",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 12,
+        "yearId": 0,
+        "teamId": 20,
+        "gameTime": "3:00pm",
+        "color": "green",
+        "start": "2019-08-04",
+        "end": "2019-08-04",
+        "userTicketModelList": [
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 13,
+        "yearId": 0,
+        "teamId": 14,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-08-14",
+        "end": "2019-08-14",
+        "userTicketModelList": [
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 14,
+        "yearId": 0,
+        "teamId": 11,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-08-17",
+        "end": "2019-08-17",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 15,
+        "yearId": 0,
+        "teamId": 21,
+        "gameTime": "4:30pm",
+        "color": "green",
+        "start": "2019-09-15",
+        "end": "2019-09-15",
+        "userTicketModelList": [
+          {
+            "userId": 6,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 6,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 16,
+        "yearId": 0,
+        "teamId": 24,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2019-09-25",
+        "end": "2019-09-25",
+        "userTicketModelList": [
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 17,
+        "yearId": 0,
+        "teamId": 18,
+        "gameTime": "6:30pm",
+        "color": "green",
+        "start": "2019-09-29",
+        "end": "2019-09-29",
+        "userTicketModelList": [
+          {
+            "userId": 3,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 3,
+            "ticketPrice": 23.06
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "yearId": 1,
+    "yearName": "2020",
+    "ticketModelList": [
+      {
+        "gameId": 18,
         "yearId": 1,
-        "yearName": "2020",
-        "ticketModelList": []
-    }
+        "teamId": 10,
+        "gameTime": "6:00pm",
+        "color": "green",
+        "start": "2020-03-15",
+        "end": "2020-03-15",
+        "userTicketModelList": [
+          {
+            "userId": 0,
+            "ticketPrice": 23.06
+          },
+          {
+            "userId": 1,
+            "ticketPrice": 23.06
+          }
+        ]
+      },
+      {
+        "gameId": 19,
+        "yearId": 1,
+        "teamId": 7,
+        "gameTime": "2:00pm",
+        "color": "green",
+        "start": "2020-03-21",
+        "end": "2020-03-21",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 20,
+        "yearId": 1,
+        "teamId": 22,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-04-04",
+        "end": "2020-04-04",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 21,
+        "yearId": 1,
+        "teamId": 17,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-04-11",
+        "end": "2020-04-11",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 22,
+        "yearId": 1,
+        "teamId": 15,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-04-18",
+        "end": "2020-04-18",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 23,
+        "yearId": 1,
+        "teamId": 14,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-05-02",
+        "end": "2020-05-02",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 24,
+        "yearId": 1,
+        "teamId": 21,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-05-13",
+        "end": "2020-05-13",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 25,
+        "yearId": 1,
+        "teamId": 20,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-05-23",
+        "end": "2020-05-23",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 26,
+        "yearId": 1,
+        "teamId": 27,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-05-27",
+        "end": "2020-05-27",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 27,
+        "yearId": 1,
+        "teamId": 19,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-06-13",
+        "end": "2020-06-13",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 28,
+        "yearId": 1,
+        "teamId": 25,
+        "gameTime": "8:00pm",
+        "color": "green",
+        "start": "2020-07-01",
+        "end": "2020-07-01",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 29,
+        "yearId": 1,
+        "teamId": 18,
+        "gameTime": "5:00pm",
+        "color": "green",
+        "start": "2020-07-12",
+        "end": "2020-07-12",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 30,
+        "yearId": 1,
+        "teamId": 24,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-07-18",
+        "end": "2020-07-18",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 31,
+        "yearId": 1,
+        "teamId": 1,
+        "gameTime": "2:00pm",
+        "color": "green",
+        "start": "2020-08-09",
+        "end": "2020-08-09",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 32,
+        "yearId": 1,
+        "teamId": 23,
+        "gameTime": "6:00pm",
+        "color": "green",
+        "start": "2020-08-16",
+        "end": "2020-08-16",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 33,
+        "yearId": 1,
+        "teamId": 2,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-08-22",
+        "end": "2020-08-22",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 34,
+        "yearId": 1,
+        "teamId": 8,
+        "gameTime": "7:00pm",
+        "color": "green",
+        "start": "2020-09-19",
+        "end": "2020-09-19",
+        "userTicketModelList": []
+      },
+      {
+        "gameId": 35,
+        "yearId": 1,
+        "teamId": 16,
+        "gameTime": "3:30pm",
+        "color": "green",
+        "start": "2020-10-04",
+        "end": "2020-10-04",
+        "userTicketModelList": []
+      }
+    ]
+  }
 ]
