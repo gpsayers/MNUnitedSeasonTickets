@@ -3,15 +3,34 @@
 }
 
 
-    <div class="row">
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-lg-12"><h1>MN United Season Tickets</h1></div>
-            </div>
-
+<div class="row">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-12"><h1>MN United Season Tickets</h1></div>
         </div>
 
     </div>
+
+</div>
+
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li><a data-toggle="tab" yearId="0" href="#2019">2019</a></li>
+        <li class="active"><a data-toggle="tab" yearId="1" href="#2020">2020</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="2019" class="tab-pane fade">
+            <h3>2019</h3>
+            <p>content</p>
+        </div>
+        <div id="2020" class="tab-pane fade in active">
+            <h3>2020</h3>
+            <p>content</p>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="row" style="border: 1px solid #e1e1e8; border-radius: 4px;">
@@ -122,6 +141,8 @@
         $("#eventLegend").stop().animate({ "marginTop": ($(window).scrollTop()) + "px", "marginLeft": ($(window).scrollLeft()) + "px" }, "slow");
     });
 
+
+
     $(document).ready(function () {
 
         //console.log('@ViewBag.Hash');
@@ -130,6 +151,22 @@
             $("#eventLegend").remove();
             $('#mobileLegend').show();
         }
+
+        function loadTicketBreakdown(id) {
+            console.log(id);
+
+            $.getJSON('/Home/GetYearModel', {yearId : id}).done(function (data) {
+
+                console.log(data);
+
+
+            });
+        }
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("yearId") // activated tab
+            loadTicketBreakdown(target);
+        });
 
         function getStats() {
             $.getJSON('/Home/GetEventStats').done(function (data) {
@@ -153,7 +190,7 @@
             $.getJSON('/Home/GetEvents').done(function (data) {
 
                 $('#calendarApril').fullCalendar({
-                    defaultDate: '2019-04-01',
+                    defaultDate: '2020-03-01',
                     contentHeight: "auto",
                     events: data,
                     eventClick: function (event, element) {

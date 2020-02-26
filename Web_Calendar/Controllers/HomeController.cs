@@ -24,9 +24,43 @@ namespace Web_Calendar.Controllers
 			return View();
 		}
 
+        public JsonResult GetYearModel(string yearId)
+        {
+            var yearModelList = JsonConvert.DeserializeObject<List<YearModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/yearModel.json"))));
+
+            var yearModel = yearModelList.Where(x => x.yearId.ToString() == yearId).FirstOrDefault();
+
+            return Json(yearModel, JsonRequestBehavior.AllowGet);
+        }
+
 		public JsonResult GetEvents()
 		{
-			List<EventModel> eventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
+            var eventList = new List<EventModel>();
+
+            var team = JsonConvert.DeserializeObject<List<TeamModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/teamModelList.json"))));
+
+            var yearModelList = JsonConvert.DeserializeObject<List<YearModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/yearModel.json"))));
+
+            var yearModel = yearModelList.Where(x => x.yearId.ToString() == "1").FirstOrDefault();
+
+            foreach (var item in yearModel.ticketModelList)
+            {
+                var findTeam = team.Where(x => x.teamId == item.teamId).FirstOrDefault();
+
+                eventList.Add(new EventModel
+                {
+                    color = item.color,
+                    start = item.start,
+                    end = item.end,
+                    title = findTeam.teamNameShort + " " + item.gameTime,
+                    ticket1 = "",
+                    ticket2 = "",
+                    img = findTeam.imagePath,
+                    id = item.gameId
+                });
+            }
+
+            //List<EventModel> oldeventList = JsonConvert.DeserializeObject<List<EventModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/eventData.json"))));
 
 			return Json(eventList, JsonRequestBehavior.AllowGet);
 		}
