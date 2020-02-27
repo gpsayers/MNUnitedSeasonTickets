@@ -33,19 +33,33 @@ namespace Web_Calendar.Controllers
             return Json(yearModel, JsonRequestBehavior.AllowGet);
         }
 
-		public JsonResult GetEvents()
+		public JsonResult GetEvents(string yearId)
 		{
             var eventList = new List<EventModel>();
+
+            var user = JsonConvert.DeserializeObject<List<UserModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/userModelList.json"))));
 
             var team = JsonConvert.DeserializeObject<List<TeamModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/teamModelList.json"))));
 
             var yearModelList = JsonConvert.DeserializeObject<List<YearModel>>(System.IO.File.ReadAllText(Server.MapPath(Url.Content("~/Content/yearModel.json"))));
 
-            var yearModel = yearModelList.Where(x => x.yearId.ToString() == "1").FirstOrDefault();
+            var yearModel = yearModelList.Where(x => x.yearId.ToString() == yearId).FirstOrDefault();
 
             foreach (var item in yearModel.ticketModelList)
             {
                 var findTeam = team.Where(x => x.teamId == item.teamId).FirstOrDefault();
+
+                var ticket1 = "";
+                var ticket2 = "";
+
+                if (item.userTicketModelList.Any())
+                {
+                    ticket1 = user.Where(x => x.userId == item.userTicketModelList.First().userId).FirstOrDefault().userName ?? "";
+                }
+                if(item.userTicketModelList.Count > 1)
+                {
+                    ticket2 = user.Where(x => x.userId == item.userTicketModelList[1].userId).FirstOrDefault().userName ?? "";
+                }
 
                 eventList.Add(new EventModel
                 {
@@ -53,8 +67,8 @@ namespace Web_Calendar.Controllers
                     start = item.start,
                     end = item.end,
                     title = findTeam.teamNameShort + " " + item.gameTime,
-                    ticket1 = "",
-                    ticket2 = "",
+                    ticket1 = ticket1,
+                    ticket2 = ticket2,
                     img = findTeam.imagePath,
                     id = item.gameId
                 });
